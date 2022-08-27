@@ -1,10 +1,9 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-//
+//Thsi class contain the script that handle the spawning of enemies for level 3.
 public class spawner2 : MonoBehaviour
 {
     public GameObject red;
@@ -27,7 +26,7 @@ public class spawner2 : MonoBehaviour
     private bool difficulty;
     private GameObject array;
 
-    //
+    //This function is called at the beginning of the scene to set the number of wave of enemies.
     void Start()
     {
         difficulty = setvol.isHard;
@@ -42,7 +41,7 @@ public class spawner2 : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    // Update is called once per frame to check if there is still enemies alive for the current wave and to move to next wave if no enemy left.
     void FixedUpdate()
     {
         array = GameObject.FindWithTag("enermy2");
@@ -65,7 +64,7 @@ public class spawner2 : MonoBehaviour
         }
     }
 
-    //
+    //This function spawns random enermy at certain locations.
     void spawn(int wave)
     {
         if(wave == 1)
@@ -120,7 +119,7 @@ public class spawner2 : MonoBehaviour
         }
     }
 
-    //
+    //This function returns the type of enermies to be spawned given a integer.
     private GameObject enermytospawn(int index)
     {
         if(index == 0)

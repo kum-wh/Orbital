@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//
+//This class handles the movement of the player object.
 public class player4 : MonoBehaviour
 {
     public Rigidbody2D rb2;
@@ -27,13 +27,13 @@ public class player4 : MonoBehaviour
         idle = 5
     }
 
-    //
+    //This function is called at the start to initialize the player movement speed.
     void Start()
     {
         moveSpeed = 2.5f;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame to update the movement vector of the player.
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -43,7 +43,7 @@ public class player4 : MonoBehaviour
         UpdateState();
     }
 
-    //
+    //This function is called repeatedly with a interval to move the player object.
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
@@ -54,7 +54,7 @@ public class player4 : MonoBehaviour
         rb.rotation = 0f;
     }
 
-    //
+    //This function is called to update the animation state of the player object.
     private void UpdateState()
     {
         if (movement.x > 0)

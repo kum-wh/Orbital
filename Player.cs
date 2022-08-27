@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//
+//This class contain the script that handles the player object game state.
 public class Player : MonoBehaviour
 {
     public Slider slider;
@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     private int currplayerhealth;
     Coroutine damageCoroutine;
 
-    //
+    //This function initialize the player health, health bar and coin amount at the start.
     void Start()
     {
         startingHitPoints = 5;
@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         cointext.text = coincount.ToString();
     }
 
-    //
+    //This function resets the character when the player dies.
     public void ResetCharacter()
     {
         setvol.paused = false;
@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
         gameObject.transform.rotation = Respawn.rotation;
     }
 
-    //
+    //This function handle updating the game state of the player until the player take damages.
     IEnumerator DamageCharacter(int damage, float interval)
     {
         while (true)
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    //
+    //This function create a filckering animation when the player take damage.
     IEnumerator FlickerChar()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.white;
     }
     
-    //
+    // This function is called when the player collides with a game object.
     void OnCollisionEnter2D(Collision2D collision)
     {
         string tagg = collision.gameObject.tag;
@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    //
+    //This function is called after the OnCollisionEnter function to stop the coroutine from continously triggering and damaging the player.
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enermy" )

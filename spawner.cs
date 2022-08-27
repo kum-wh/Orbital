@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//
+//This class contains the scripts that handles the spawning of enemies for level 1 and 2.
 public class spawner : MonoBehaviour
 {
     public int level;
@@ -21,7 +21,7 @@ public class spawner : MonoBehaviour
     private int blueenermy;
     private int redenermy;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update to initialize the number of enemy to spawn and then spawn them.
     void Start()
     {
         difficulty = setvol.isHard;
@@ -138,7 +138,7 @@ public class spawner : MonoBehaviour
         }
     }
 
-    //
+    //This function checks if the player has clear the level by checking if there is still enemy object present.
     void FixedUpdate()
     {
         if (level == 4)

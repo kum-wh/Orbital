@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//This class contains the script for the enermy game object that can fire projectiles.
+//This class contains the script for the enemy game object that can fire projectiles.
 public class enermy2 : MonoBehaviour
 {
     public GameObject bulletPrefab;
@@ -19,7 +19,7 @@ public class enermy2 : MonoBehaviour
     private Vector2 movement;
     private float distance;
 
-    // Start is called before the first frame update to set the neccessary variable of the enermy object.
+    // Start is called before the first frame update to set the neccessary variable of the enemy object.
     void Start()
     {
         moveSpeed = 1;
