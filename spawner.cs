@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//
 public class spawner : MonoBehaviour
 {
     public int level;
@@ -19,6 +20,7 @@ public class spawner : MonoBehaviour
     private int whiteenermy;
     private int blueenermy;
     private int redenermy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -135,6 +137,8 @@ public class spawner : MonoBehaviour
             number -= 1;
         }
     }
+
+    //
     void FixedUpdate()
     {
         if (level == 4)

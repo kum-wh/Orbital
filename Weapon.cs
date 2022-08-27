@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class is attached to the player object and handle the shooting.
 public class Weapon : MonoBehaviour
 {
     public GameObject bulletPrefab1;
@@ -23,6 +24,8 @@ public class Weapon : MonoBehaviour
     private int weaponstate = 0;
     public static Queue<GameObject> Pool;
 
+    //This function is called before the first frame to initialize the bullet speed and firing rate. 
+    //The function also instantiate a few bullet objects into a queue for object pooling.
     void Start()
     {
         difficulty = setvol.isHard;
@@ -47,6 +50,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    //This function is called every frame to check from left click or right click, where left click fires and right click switch bullet.
     void Update()
     {
         if (Input.GetButtonDown("Fire2"))
@@ -89,6 +93,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    //This function is called with a fixed interval to serve as a timer for fire rate.
     void FixedUpdate()
     {
         if (counter1 == interval1)
@@ -109,6 +114,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    //Set the bullet object as active when fired and return the object.
     private GameObject SpawnAmmo()
     {
         GameObject ammo = Pool.Dequeue();
@@ -119,17 +125,20 @@ public class Weapon : MonoBehaviour
         return ammo;
     }
 
+    //This function is called when the second type of bullet is fired.
     private void FireAmmo()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         GameObject ammo = SpawnAmmo();
     }
 
+    //Destroy all bullet objects if player object is destroyed.
     void OnDestroy()
     {
         Pool = null;
     }
 
+    //This function is called when the first type of bullet is fired, to instantiate the bullet and add force to its.
     void shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab1, firePoint.position, firePoint.rotation);

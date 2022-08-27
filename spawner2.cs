@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+//
 public class spawner2 : MonoBehaviour
 {
     public GameObject red;
@@ -26,6 +27,7 @@ public class spawner2 : MonoBehaviour
     private bool difficulty;
     private GameObject array;
 
+    //
     void Start()
     {
         difficulty = setvol.isHard;
@@ -63,6 +65,7 @@ public class spawner2 : MonoBehaviour
         }
     }
 
+    //
     void spawn(int wave)
     {
         if(wave == 1)
@@ -116,7 +119,8 @@ public class spawner2 : MonoBehaviour
             Instantiate(enermy, spawn8.position, spawn8.rotation);
         }
     }
-    
+
+    //
     private GameObject enermytospawn(int index)
     {
         if(index == 0)

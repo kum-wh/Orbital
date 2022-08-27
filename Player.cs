@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//
 public class Player : MonoBehaviour
 {
     public Slider slider;
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     private int currplayerhealth;
     Coroutine damageCoroutine;
 
+    //
     void Start()
     {
         startingHitPoints = 5;
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
         cointext.text = coincount.ToString();
     }
 
+    //
     public void ResetCharacter()
     {
         setvol.paused = false;
@@ -37,6 +40,7 @@ public class Player : MonoBehaviour
         gameObject.transform.rotation = Respawn.rotation;
     }
 
+    //
     IEnumerator DamageCharacter(int damage, float interval)
     {
         while (true)
@@ -64,6 +68,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //
     IEnumerator FlickerChar()
     {
         GetComponent<SpriteRenderer>().color = Color.red;
@@ -71,6 +76,7 @@ public class Player : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.white;
     }
     
+    //
     void OnCollisionEnter2D(Collision2D collision)
     {
         string tagg = collision.gameObject.tag;
@@ -117,6 +123,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enermy" )

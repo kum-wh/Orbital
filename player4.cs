@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//
 public class player4 : MonoBehaviour
 {
     public Rigidbody2D rb2;
@@ -26,6 +27,7 @@ public class player4 : MonoBehaviour
         idle = 5
     }
 
+    //
     void Start()
     {
         moveSpeed = 2.5f;
@@ -41,6 +43,7 @@ public class player4 : MonoBehaviour
         UpdateState();
     }
 
+    //
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
@@ -51,6 +54,7 @@ public class player4 : MonoBehaviour
         rb.rotation = 0f;
     }
 
+    //
     private void UpdateState()
     {
         if (movement.x > 0)

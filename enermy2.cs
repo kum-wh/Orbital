@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class contains the script for the enermy game object that can fire projectiles.
 public class enermy2 : MonoBehaviour
 {
     public GameObject bulletPrefab;
@@ -17,7 +18,8 @@ public class enermy2 : MonoBehaviour
     private int counter;
     private Vector2 movement;
     private float distance;
-    // Start is called before the first frame update
+
+    // Start is called before the first frame update to set the neccessary variable of the enermy object.
     void Start()
     {
         moveSpeed = 1;
@@ -36,7 +38,7 @@ public class enermy2 : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    // Update is called once per frame to make the game object face the player.
     void Update()
     {
         distance = Vector3.Distance(player.transform.position, transform.position);
@@ -50,6 +52,7 @@ public class enermy2 : MonoBehaviour
         }
     }
 
+    //This function is called in a fixed interval that move the game object towards the player and fire a projectile with a longer interval.
     void FixedUpdate()
     {
         if (distance <= lookraduis)
@@ -67,12 +70,14 @@ public class enermy2 : MonoBehaviour
         moveChatacter(movement);
     }
 
+    //This function moves the game object by a certain distance.
     void moveChatacter(Vector2 direction)
     {
         rb3.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
         rb.transform.position = rb3.transform.position;
     }
-
+    
+    //This function is called to create a bullet object and fire it towards the player.
     void shoot()
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This class handles the movement artificial intelligence of the enermy game object.
 public class Enermy1 : MonoBehaviour
 {
     public int type;
@@ -11,7 +12,8 @@ public class Enermy1 : MonoBehaviour
     private GameObject player;
     private Vector2 movement;
     private bool difficulty;
-    // Start is called before the first frame update
+
+    // Start is called before the first frame update to set the move speed of the enermy game object.
     void Start()
     {
         difficulty = setvol.isHard;
@@ -41,7 +43,7 @@ public class Enermy1 : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    // Update is called once per frame to make the game object face the player.
     void Update()
     {
         float distance = Vector3.Distance(player.transform.position, transform.position);
@@ -53,11 +55,13 @@ public class Enermy1 : MonoBehaviour
         }
     }
 
+    //This function is called in a fixed interval to move the game object by a certain distance towards the player.
     void FixedUpdate()
     {
         moveChatacter(movement);
     }
 
+    //This function is to move the game object.
     void moveChatacter(Vector2 direction)
     {
         rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));

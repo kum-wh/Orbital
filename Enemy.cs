@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This class contains the scripts for the enermy game objects gamestate.
 public class Enemy : MonoBehaviour
 {
     public int type;
@@ -12,7 +13,8 @@ public class Enemy : MonoBehaviour
     private int startingHitPoints;
     private int currhealth;
     private bool difficulty;
-     
+    
+    //This function is called when the game object is initialized to set the damage strength and health of the enermy at the start.
     void Start()
     {
         difficulty = setvol.isHard;
@@ -51,6 +53,7 @@ public class Enemy : MonoBehaviour
         currhealth = startingHitPoints;
     }
 
+    //This function is triggered when the enermy game object collides with another game object. If the game object the enermy collide with is a bullet, damage is dealt to its.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         string tagg = collision.gameObject.tag;
@@ -64,6 +67,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    //This functions is triggered when the enermy game object takes damage.
     private void takeDamage(int damage)
     {
         AudioSource.PlayClipAtPoint(landingAudio, Camera.main.transform.position);
