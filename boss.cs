@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This class contain the script for the boss game object.
 public class boss : MonoBehaviour
 {
     private int state;
@@ -30,7 +31,8 @@ public class boss : MonoBehaviour
     private int waves = 0;
     private GameObject array;
     private int shootcounter = 0;
-    // Start is called before the first frame update
+
+    // Start is called before the first frame update to initialize the boss.
     void Start()
     {
         slider.value = health;
@@ -38,6 +40,8 @@ public class boss : MonoBehaviour
         activating_distance = 5.7f;
         bulletForce = 6f;
     }
+
+    // This function is called at a fixed interval to perform updates to the game for those timed effects.
     void FixedUpdate()
     {
         shields.transform.Rotate(0,0,4,Space.Self);
@@ -61,22 +65,26 @@ public class boss : MonoBehaviour
         }
     }
     
+    //the second state of the boss is to shoot projectiles.
     private void state2()
     {
         shoot(40);
     }
 
+    //the third state of the boss is to spawn more minons.
     private void state3()
     {
         boss_spawn(5);
     }
-
+    
+    //the last state of the boss is both to shoot projectiles and spawn enermies.
     private void state4()
     {
         shoot(35);
         boss_spawn(5);
     }
 
+    //This function is called by unity when this game object collides with another game object. This function updates the game state of the boss.
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (candmg == true)
@@ -114,6 +122,7 @@ public class boss : MonoBehaviour
         }
     }
 
+    //This function instantiate the bullets and apply a force to the bullets to move them. It also have a counter to fire the bullets in a fixed interval.
     private void shoot(int interval)
     {
         if (shootcounter == interval)
@@ -138,6 +147,7 @@ public class boss : MonoBehaviour
         }
     }
 
+    //This function return the type of enermy from a integer value.
     private GameObject enermytospawn(int index)
     {
         if (index == 0)
@@ -154,6 +164,7 @@ public class boss : MonoBehaviour
         }
     }
 
+    //This function allows the boss to initantiate enermies at fixed positions
     private void boss_spawn(int wavesnum)
     {
         array = GameObject.FindWithTag("Enermy");
