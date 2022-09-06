@@ -1,4 +1,4 @@
-# CP2106 Independent Software Development Project (Orbital)
+# Orbital Independent Software Development Project
 
 ## Description
 Orbital is a summer vacation module I enrolled in Year 1 where I gain experience in a chosen computing technologies. The project was done in pairs of two, where me and my project mate propose, design, and implement the project.
